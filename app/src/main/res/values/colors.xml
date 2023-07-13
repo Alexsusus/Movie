@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="white_H1_H6">#ECECEC</color>
+    <color name="pink_genre">#FF3466</color>
+    <color name="reviews_grey">#6D6D80</color>
+    <color name="white_text_storyline">#A3A3AF</color>
+    <color name="white_names_actors_under_pic">#D8D8D8</color>
+</resources>
