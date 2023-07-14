@@ -72,7 +72,8 @@
         android:layout_marginTop="4dp"
         android:src="@drawable/star_icon_pink"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/genre" />
+        app:layout_constraintTop_toBottomOf="@+id/genre"
+        android:contentDescription="@string/description_first_star"/>
 
     <ImageView
         android:id="@+id/second_star"
@@ -82,7 +83,8 @@
         android:layout_marginTop="4dp"
         android:src="@drawable/star_icon_pink"
         app:layout_constraintStart_toStartOf="@id/first_star"
-        app:layout_constraintTop_toBottomOf="@+id/genre" />
+        app:layout_constraintTop_toBottomOf="@+id/genre"
+        android:contentDescription="@string/description_second_star"/>
 
     <ImageView
         android:id="@+id/third_star"
@@ -92,7 +94,8 @@
         android:layout_marginTop="4dp"
         android:src="@drawable/star_icon_pink"
         app:layout_constraintStart_toStartOf="@id/second_star"
-        app:layout_constraintTop_toBottomOf="@+id/genre" />
+        app:layout_constraintTop_toBottomOf="@+id/genre"
+        android:contentDescription="@string/description_third_star"/>
 
     <ImageView
         android:id="@+id/fourth_star"
@@ -102,7 +105,8 @@
         android:layout_marginTop="4dp"
         android:src="@drawable/star_icon_pink"
         app:layout_constraintStart_toStartOf="@id/third_star"
-        app:layout_constraintTop_toBottomOf="@+id/genre" />
+        app:layout_constraintTop_toBottomOf="@+id/genre"
+        android:contentDescription="@string/description_fourth_star"/>
 
     <ImageView
         android:id="@+id/fifth_star"
@@ -112,7 +116,8 @@
         android:layout_marginTop="4dp"
         android:src="@drawable/star_icon_grey"
         app:layout_constraintStart_toStartOf="@id/fourth_star"
-        app:layout_constraintTop_toBottomOf="@+id/genre" />
+        app:layout_constraintTop_toBottomOf="@+id/genre"
+        android:contentDescription="@string/description_fifth_star"/>
 
     <TextView
         android:id="@+id/reviews"
@@ -181,7 +186,8 @@
         android:scaleType="fitXY"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@id/second_pic"
-        app:layout_constraintTop_toBottomOf="@+id/cast" />
+        app:layout_constraintTop_toBottomOf="@+id/cast"
+        android:contentDescription="@string/description_first_pic"/>
 
     <androidx.constraintlayout.widget.Barrier
         android:id="@+id/barrier1_left"
@@ -222,7 +228,8 @@
         android:scaleType="fitXY"
         app:layout_constraintEnd_toStartOf="@id/third_pic"
         app:layout_constraintStart_toEndOf="@+id/first_pic"
-        app:layout_constraintTop_toBottomOf="@+id/cast" />
+        app:layout_constraintTop_toBottomOf="@+id/cast"
+        android:contentDescription="@string/description_second_pic"/>
 
     <androidx.constraintlayout.widget.Barrier
         android:id="@+id/barrier2_left"
@@ -264,7 +271,8 @@
         android:scaleType="fitXY"
         app:layout_constraintEnd_toStartOf="@id/fourth_pic"
         app:layout_constraintStart_toEndOf="@+id/second_pic"
-        app:layout_constraintTop_toBottomOf="@+id/cast" />
+        app:layout_constraintTop_toBottomOf="@+id/cast"
+        android:contentDescription="@string/description_third_pic"/>
 
     <androidx.constraintlayout.widget.Barrier
         android:id="@+id/barrier3_left"
@@ -305,7 +313,8 @@
         android:scaleType="fitXY"
         app:layout_constraintStart_toEndOf="@id/third_pic"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cast" />
+        app:layout_constraintTop_toBottomOf="@+id/cast"
+        android:contentDescription="@string/description_fourth_pic"/>
 
     <androidx.constraintlayout.widget.Barrier
         android:id="@+id/barrier4_left"

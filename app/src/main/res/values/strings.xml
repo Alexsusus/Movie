@@ -12,4 +12,13 @@
     <string name="name_2">Chris Evans</string>
     <string name="name_3">Mark Ruffalo</string>
     <string name="name_4">Chris Hemsworth</string>
+    <string name="description_first_star">Film\'s first star rating</string>
+    <string name="description_second_star">Film\'s second star rating</string>
+    <string name="description_third_star">Film\'s third star rating</string>
+    <string name="description_fourth_star">Film\'s fourth star rating</string>
+    <string name="description_fifth_star">Film\'s fifth star rating</string>
+    <string name="description_first_pic">Image of the first actor</string>
+    <string name="description_second_pic">Image of the second actor</string>
+    <string name="description_third_pic">Image of the third actor</string>
+    <string name="description_fourth_pic">Image of the fourth actor</string>
 </resources>
