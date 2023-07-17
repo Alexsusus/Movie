@@ -9,7 +9,6 @@
     <color name="white_names_actors_under_pic">#D8D8D8</color>
     <color name="background_movies_list">#191926</color>
     <color name="background_movies_item">#2222328C</color>
-    <color name="color_movie_duration">#565665</color>
-    <color name="test_bgc">#63637580</color>
-    <color name="test_bgc2">#191926</color>
+    <color name="movie_duration">#565665</color>
+    <color name="age_limit_grey">#CC000000</color>
 </resources>

@@ -25,5 +25,6 @@
     <string name="movies_list_tittle">Movies list</string>
     <string name="description_bgc_item_list">Movie cover</string>
     <string name="movie_title_list">Avengers: End Game</string>
-    <string name="movie_duration">137 min</string>
+    <string name="movie_duration">137 MIN</string>
+    <string name="description_like">like the movie</string>
 </resources>
