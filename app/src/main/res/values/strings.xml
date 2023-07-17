@@ -27,4 +27,5 @@
     <string name="movie_title_list">Avengers: End Game</string>
     <string name="movie_duration">137 MIN</string>
     <string name="description_like">like the movie</string>
+    <string name="description_icon_movie">crosshair icon</string>
 </resources>
