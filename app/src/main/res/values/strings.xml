@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Movie</string>
     <string name="back">back</string>
-    <string name="avengers_H1">Avengers: \nEnd Game</string>
+    <string name="movie_title_details">Avengers: \nEnd Game</string>
     <string name="age_limit_13">13+</string>
     <string name="genre">Action, Adventure, Fantasy</string>
     <string name="count_reviews">125 REVIEWS</string>
@@ -21,4 +21,9 @@
     <string name="description_second_pic">Image of the second actor</string>
     <string name="description_third_pic">Image of the third actor</string>
     <string name="description_fourth_pic">Image of the fourth actor</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="movies_list_tittle">Movies list</string>
+    <string name="description_bgc_item_list">Movie cover</string>
+    <string name="movie_title_list">Avengers: End Game</string>
+    <string name="movie_duration">137 min</string>
 </resources>
