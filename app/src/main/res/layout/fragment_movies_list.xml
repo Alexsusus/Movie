@@ -35,7 +35,7 @@
 
 
     <FrameLayout
-        android:id="@+id/cardView"
+        android:id="@+id/frameLayoutMovie"
         android:layout_width="170dp"
         android:layout_height="296dp"
         android:layout_marginStart="14dp"
