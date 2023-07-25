@@ -2,6 +2,7 @@ package com.example.movie
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.recyclerview.widget.RecyclerView
 
 class MainActivity : AppCompatActivity(), SomeFragmentClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -11,6 +12,9 @@ class MainActivity : AppCompatActivity(), SomeFragmentClickListener {
         supportFragmentManager.beginTransaction()
             .add(R.id.main_container, FragmentMoviesList())
             .commit()
+
+
+
     }
 
     override fun selectedMovie() {
