@@ -128,31 +128,17 @@
             app:layout_constraintTop_toTopOf="@id/fourth_star" />
 
         <TextView
-            android:id="@+id/count_reviews"
+            android:id="@+id/reviews"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="6dp"
-            android:text="@string/count_reviews"
+            android:text="@string/reviews"
             android:textColor="@color/reviews_grey"
             android:textSize="8sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@id/fifth_star"
             app:layout_constraintStart_toEndOf="@id/fifth_star"
             app:layout_constraintTop_toTopOf="@id/fifth_star"
-            tools:ignore="SmallSp" />
-
-        <TextView
-            android:id="@+id/reviews"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="2dp"
-            android:text="@string/reviews"
-            android:textColor="@color/reviews_grey"
-            android:textSize="8sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toEndOf="@id/count_reviews"
-            app:layout_constraintTop_toTopOf="@id/count_reviews"
-            app:layout_constraintBottom_toBottomOf="@id/count_reviews"
             tools:ignore="SmallSp" />
 
 
@@ -170,29 +156,15 @@
             app:layout_constraintTop_toBottomOf="@id/movie_poster" />
 
         <TextView
-            android:id="@+id/count_duration"
+            android:id="@+id/duration"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/count_duration"
+            android:text="@string/duration"
             android:textColor="@color/movie_duration"
             android:textSize="8sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="@id/movie_title"
             app:layout_constraintTop_toBottomOf="@id/movie_title"
-            tools:ignore="SmallSp" />
-
-        <TextView
-            android:id="@+id/duration"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="2dp"
-            android:text="@string/movie_duration"
-            android:textColor="@color/movie_duration"
-            android:textSize="8sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toEndOf="@id/count_duration"
-            app:layout_constraintTop_toTopOf="@id/count_duration"
-            app:layout_constraintBottom_toBottomOf="@id/count_duration"
             tools:ignore="SmallSp" />
 
 

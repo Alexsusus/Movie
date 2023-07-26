@@ -55,7 +55,7 @@ class FragmentMoviesList : Fragment() {
         return listOf(
             Movie(
                 R.drawable.avengers_poster,
-                "13+",
+                13,
                 "Action, Adventure, Fantasy",
                 125,
                 "Avengers: End Game",
@@ -64,7 +64,7 @@ class FragmentMoviesList : Fragment() {
             ),
             Movie(
                 R.drawable.tenet_poster,
-                "16+",
+                16,
                 "Action, Sci-Fi, Thriller ",
                 98,
                 "Tenet",
@@ -73,7 +73,7 @@ class FragmentMoviesList : Fragment() {
             ),
             Movie(
                 R.drawable.black_widow_poster,
-                "13+",
+                13,
                 "Action, Adventure, Sci-Fi",
                 38,
                 "Black Widow",
@@ -82,7 +82,7 @@ class FragmentMoviesList : Fragment() {
             ),
             Movie(
                 R.drawable.wonder_woman_1984_poster,
-                "13+",
+                13,
                 "Action, Adventure, Fantasy",
                 74,
                 "Wonder Woman 1984",
