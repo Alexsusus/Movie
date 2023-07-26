@@ -25,7 +25,6 @@ class FragmentMoviesList : Fragment() {
         val view = inflater.inflate(R.layout.fragment_movies_list, container, false)
         val list = view.findViewById<RecyclerView>(R.id.recyclerView)
         val movies = getMovies()
-
         val adapter = context?.let { MoviesAdapter(it, movies) }
         list.adapter = adapter
         list.layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
@@ -60,7 +59,8 @@ class FragmentMoviesList : Fragment() {
                 "Action, Adventure, Fantasy",
                 125,
                 "Avengers: End Game",
-                137
+                137,
+                4
             ),
             Movie(
                 R.drawable.tenet_poster,
@@ -68,7 +68,8 @@ class FragmentMoviesList : Fragment() {
                 "Action, Sci-Fi, Thriller ",
                 98,
                 "Tenet",
-                97
+                97,
+                5
             ),
             Movie(
                 R.drawable.black_widow_poster,
@@ -76,7 +77,8 @@ class FragmentMoviesList : Fragment() {
                 "Action, Adventure, Sci-Fi",
                 38,
                 "Black Widow",
-                102
+                102,
+                4
             ),
             Movie(
                 R.drawable.wonder_woman_1984_poster,
@@ -84,7 +86,8 @@ class FragmentMoviesList : Fragment() {
                 "Action, Adventure, Fantasy",
                 74,
                 "Wonder Woman 1984",
-                120
+                120,
+                5
             )
         )
     }
