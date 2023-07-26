@@ -7,7 +7,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
-import android.widget.GridLayout
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -26,10 +25,11 @@ class FragmentMoviesList : Fragment() {
         val view = inflater.inflate(R.layout.fragment_movies_list, container, false)
         val list = view.findViewById<RecyclerView>(R.id.recyclerView)
         val movies = getMovies()
+
         val adapter = context?.let { MoviesAdapter(it, movies) }
         list.adapter = adapter
-        list.layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false )
-        list.layoutManager = GridLayoutManager(context,2)
+        list.layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
+        list.layoutManager = GridLayoutManager(context, 2)
 
         view?.findViewById<FrameLayout>(R.id.frameLayoutMovie)?.apply {
             setOnClickListener {
@@ -55,28 +55,36 @@ class FragmentMoviesList : Fragment() {
     fun getMovies(): List<Movie> {
         return listOf(
             Movie(
-                "C:\\Users\\Alex\\AndroidStudioProjects\\MayComeBack\\Movie\\app\\src\\main\\res\\drawable\\poster_avengers.webp",
-                13,
-                "genre",
-                "1 reviews",
-                "title",
-                "dur 1"
+                R.drawable.avengers_poster,
+                "13+",
+                "Action, Adventure, Fantasy",
+                125,
+                "Avengers: End Game",
+                137
             ),
             Movie(
-                "C:\\Users\\Alex\\AndroidStudioProjects\\MayComeBack\\Movie\\app\\src\\main\\res\\drawable\\pic_chris_h.webp",
-                99,
-                "genre2",
-                "21 reviews",
-                "2title",
-                "2dur 1"
+                R.drawable.tenet_poster,
+                "16+",
+                "Action, Sci-Fi, Thriller ",
+                98,
+                "Tenet",
+                97
             ),
             Movie(
-                "C:\\Users\\Alex\\AndroidStudioProjects\\MayComeBack\\Movie\\app\\src\\main\\res\\drawable\\pic_chris_h.webp",
-                999,
-                "genre23",
-                "213 reviews",
-                "23title",
-                "23dur 1"
+                R.drawable.black_widow_poster,
+                "13+",
+                "Action, Adventure, Sci-Fi",
+                38,
+                "Black Widow",
+                102
+            ),
+            Movie(
+                R.drawable.wonder_woman_1984_poster,
+                "13+",
+                "Action, Adventure, Fantasy",
+                74,
+                "Wonder Woman 1984",
+                120
             )
         )
     }

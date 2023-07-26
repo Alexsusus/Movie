@@ -57,7 +57,7 @@
                 android:id="@+id/movie_poster"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/poster_avengers"
+                android:background="@drawable/avengers_poster"
                 android:contentDescription="@string/description_bgc_item_list"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -164,7 +164,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/count_reviews"
+                android:text="@string/reviews"
                 android:textSize="8sp"
                 android:textStyle="bold"
                 android:textColor="@color/reviews_grey"

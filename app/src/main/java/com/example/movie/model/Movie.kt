@@ -3,11 +3,11 @@ package com.example.movie.model
 
 
 data class Movie(
-    val poster: String,
-    val ageLimit: Int,
+    val poster: Int,
+    val ageLimit: String,
     val genre: String,
-    val reviews: String,
+    val reviews: Int,
     val movieTitle: String,
-    val duration: String
+    val duration: Int
 )
 
