@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ImageView
+        android:id="@+id/pic_actor"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="7dp"
+        android:layout_marginEnd="8dp"
+        android:src="@drawable/pic_robert"
+        android:adjustViewBounds="true"
+        android:scaleType="fitXY"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:contentDescription="@string/description_first_pic" />
+
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/barrier1_left"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:barrierDirection="left"
+        app:constraint_referenced_ids="pic_actor" />
+
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/barrier1_right"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:barrierDirection="right"
+        app:constraint_referenced_ids="pic_actor" />
+
+    <TextView
+        android:id="@+id/name_actor"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:text="@string/nameRobertDJ"
+        android:textColor="@color/white_names_actors_under_pic"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@id/barrier1_left"
+        app:layout_constraintTop_toBottomOf="@+id/pic_actor"
+        app:layout_constraintEnd_toStartOf="@id/barrier1_right"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

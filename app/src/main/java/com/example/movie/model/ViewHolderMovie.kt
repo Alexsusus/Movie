@@ -1,12 +1,12 @@
-package com.example.movie
+package com.example.movie.model
 
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.movie.model.Movie
+import com.example.movie.R
 
-class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+class ViewHolderMovie(view: View) : RecyclerView.ViewHolder(view) {
 
     private val poster: ImageView = itemView.findViewById(R.id.movie_poster)
     private val ageLimit: TextView = itemView.findViewById(R.id.age_limit)

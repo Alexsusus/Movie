@@ -6,7 +6,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.FrameLayout
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -25,17 +24,16 @@ class FragmentMoviesList : Fragment() {
         val view = inflater.inflate(R.layout.fragment_movies_list, container, false)
         val list = view.findViewById<RecyclerView>(R.id.recyclerView)
         val movies = getMovies()
-        val adapter = context?.let { MoviesAdapter(it, movies) }
+
+        val adapter = context?.let {
+            MoviesAdapter(it, movies) {
+                someFragmentClickListener?.selectedMovie()
+            }
+        }
+
         list.adapter = adapter
         list.layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
         list.layoutManager = GridLayoutManager(context, 2)
-
-        view?.findViewById<FrameLayout>(R.id.frameLayoutMovie)?.apply {
-            setOnClickListener {
-                someFragmentClickListener?.selectedMovie()
-            }
-
-        }
         return view
     }
 
