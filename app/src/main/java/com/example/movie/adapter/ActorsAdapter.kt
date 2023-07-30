@@ -4,9 +4,6 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.RecyclerView.Adapter
-import androidx.recyclerview.widget.RecyclerView.RecycledViewPool
-import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.example.movie.R
 import com.example.movie.model.Actor
 import com.example.movie.model.ViewHolderActor

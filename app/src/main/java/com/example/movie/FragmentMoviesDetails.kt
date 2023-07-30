@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.movie.adapter.ActorsAdapter
@@ -29,6 +30,7 @@ class FragmentMoviesDetails : Fragment() {
         val adapter = context?.let { ActorsAdapter(it, actors) }
         list.adapter = adapter
         list.layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
+        list.layoutManager = GridLayoutManager(context, 4)
 
         view.findViewById<ImageButton>(R.id.backButton).apply {
             setOnClickListener {
