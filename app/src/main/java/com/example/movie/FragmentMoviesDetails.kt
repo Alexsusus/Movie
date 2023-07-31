@@ -8,16 +8,15 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.movie.adapter.ActorsAdapter
-import com.example.movie.adapter.MoviesAdapter
 import com.example.movie.model.Actor
 
 
 class FragmentMoviesDetails : Fragment() {
 
     private var someFragmentClickListener: SomeFragmentClickListener? = null
+    private lateinit var list: RecyclerView
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -25,17 +24,23 @@ class FragmentMoviesDetails : Fragment() {
     ): View? {
 
         val view = inflater.inflate(R.layout.fragment_movies_details, container, false)
-        val list = view.findViewById<RecyclerView>(R.id.recyclerView)
+        list = view.findViewById(R.id.recyclerView)
         val actors = getActors()
+        val layoutManager = GridLayoutManager(context, 4)
+        list.layoutManager = layoutManager
+
         val adapter = context?.let { ActorsAdapter(it, actors) }
         list.adapter = adapter
-        list.layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
-        list.layoutManager = GridLayoutManager(context, 4)
 
         view.findViewById<ImageButton>(R.id.backButton).apply {
             setOnClickListener {
                 someFragmentClickListener?.backToMoviesList()
             }
+        }
+
+        savedInstanceState?.let {
+            val adapterState = it.getBundle("adapter_state")
+            layoutManager.onRestoreInstanceState(adapterState)
         }
 
         return view
@@ -51,6 +56,11 @@ class FragmentMoviesDetails : Fragment() {
     override fun onDetach() {
         super.onDetach()
         someFragmentClickListener = null
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putParcelable("adapter_state", list.layoutManager?.onSaveInstanceState())
     }
 
     private fun getActors(): List<Actor> {

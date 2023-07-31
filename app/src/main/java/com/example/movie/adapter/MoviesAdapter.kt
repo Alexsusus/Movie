@@ -2,12 +2,9 @@ package com.example.movie.adapter
 
 import android.content.Context
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.movie.FragmentMoviesList
 import com.example.movie.R
-import com.example.movie.SomeFragmentClickListener
 import com.example.movie.model.ViewHolderMovie
 import com.example.movie.model.Movie
 

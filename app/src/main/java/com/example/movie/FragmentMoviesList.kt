@@ -7,7 +7,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.movie.adapter.MoviesAdapter
 import com.example.movie.model.Movie
@@ -15,6 +14,7 @@ import com.example.movie.model.Movie
 class FragmentMoviesList : Fragment() {
 
     private var someFragmentClickListener: SomeFragmentClickListener? = null
+    private lateinit var list: RecyclerView
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -22,8 +22,10 @@ class FragmentMoviesList : Fragment() {
     ): View? {
 
         val view = inflater.inflate(R.layout.fragment_movies_list, container, false)
-        val list = view.findViewById<RecyclerView>(R.id.recyclerView)
+        list = view.findViewById(R.id.recyclerView)
         val movies = getMovies()
+        val layoutManager = GridLayoutManager(context, 2)
+        list.layoutManager = layoutManager
 
         val adapter = context?.let {
             MoviesAdapter(it, movies) {
@@ -32,9 +34,17 @@ class FragmentMoviesList : Fragment() {
         }
 
         list.adapter = adapter
-        list.layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
-        list.layoutManager = GridLayoutManager(context, 2)
+
+        savedInstanceState?.let {
+            val adapterState = it.getBundle("adapter_state")
+            layoutManager.onRestoreInstanceState(adapterState)
+        }
+
         return view
+    }
+
+    companion object {
+        const val TAG = "FragmentMoviesList"
     }
 
     override fun onAttach(context: Context) {
@@ -47,6 +57,11 @@ class FragmentMoviesList : Fragment() {
     override fun onDetach() {
         super.onDetach()
         someFragmentClickListener = null
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putParcelable("adapter_state", list.layoutManager?.onSaveInstanceState())
     }
 
     fun getMovies(): List<Movie> {

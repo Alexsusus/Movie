@@ -2,21 +2,22 @@ package com.example.movie
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import android.widget.Toast
-import androidx.recyclerview.widget.RecyclerView
 
 class MainActivity : AppCompatActivity(), SomeFragmentClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        supportFragmentManager.beginTransaction()
-            .add(R.id.main_container, FragmentMoviesList())
-            .commit()
-
-
-
+        if (savedInstanceState == null) {
+            supportFragmentManager.beginTransaction()
+                .add(R.id.main_container, FragmentMoviesList())
+                .commit()
+            if (supportFragmentManager.findFragmentByTag(FragmentMoviesList.TAG) == null) {
+                supportFragmentManager.beginTransaction()
+                    .add(R.id.main_container, FragmentMoviesList(), FragmentMoviesList.TAG)
+                    .commit()
+            }
+        }
     }
 
     override fun selectedMovie() {
