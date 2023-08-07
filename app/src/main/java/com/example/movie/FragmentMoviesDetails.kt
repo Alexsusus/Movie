@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.movie.adapter.ActorsAdapter
 import com.example.movie.model.Actor
 
-
+//start
 class FragmentMoviesDetails : Fragment() {
 
     private var someFragmentClickListener: SomeFragmentClickListener? = null
