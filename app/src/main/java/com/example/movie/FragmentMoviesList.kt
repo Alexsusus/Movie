@@ -9,12 +9,13 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.movie.adapter.MoviesAdapter
-import com.example.movie.model.Movie
+import com.example.movie.repository.MovieRepository
 
 class FragmentMoviesList : Fragment() {
 
     private var someFragmentClickListener: SomeFragmentClickListener? = null
     private lateinit var list: RecyclerView
+    //private lateinit var movieRepository: MovieRepository
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -23,7 +24,8 @@ class FragmentMoviesList : Fragment() {
 
         val view = inflater.inflate(R.layout.fragment_movies_list, container, false)
         list = view.findViewById(R.id.recyclerView)
-        val movies = getMovies()
+        val movieRepository = MovieRepository()
+        val movies = context?.let { movieRepository.getMovies(it) } ?: emptyList()
         val layoutManager = GridLayoutManager(context, 2)
         list.layoutManager = layoutManager
 
@@ -62,47 +64,6 @@ class FragmentMoviesList : Fragment() {
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
         outState.putParcelable("adapter_state", list.layoutManager?.onSaveInstanceState())
-    }
-
-    fun getMovies(): List<Movie> {
-        return listOf(
-            Movie(
-                R.drawable.avengers_poster,
-                13,
-                "Action, Adventure, Fantasy",
-                125,
-                "Avengers: End Game",
-                137,
-                4
-            ),
-            Movie(
-                R.drawable.tenet_poster,
-                16,
-                "Action, Sci-Fi, Thriller ",
-                98,
-                "Tenet",
-                97,
-                5
-            ),
-            Movie(
-                R.drawable.black_widow_poster,
-                13,
-                "Action, Adventure, Sci-Fi",
-                38,
-                "Black Widow",
-                102,
-                4
-            ),
-            Movie(
-                R.drawable.wonder_woman_1984_poster,
-                13,
-                "Action, Adventure, Fantasy",
-                74,
-                "Wonder Woman 1984",
-                120,
-                5
-            )
-        )
     }
 
 }

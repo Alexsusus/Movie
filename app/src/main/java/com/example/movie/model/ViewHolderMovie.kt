@@ -4,6 +4,7 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.movie.R
 
 class ViewHolderMovie(view: View) : RecyclerView.ViewHolder(view) {
@@ -22,16 +23,20 @@ class ViewHolderMovie(view: View) : RecyclerView.ViewHolder(view) {
 
 
     fun bind(movie: Movie) {
-        poster.setImageResource(movie.poster)
-        ageLimit.text = movie.ageLimit.toString().plus("+")
-        genre.text = movie.genre
+        Glide.with(poster.context)
+            .load(movie.posterUrl)
+            .into(poster)
+
+        ageLimit.text = "18+"
+        genre.text = movie.genre.toString()
         reviews.text = movie.reviews.toString().plus(" REVIEWS")
         movieTitle.text = movie.movieTitle
         duration.text = movie.duration.toString().plus(" MIN")
         checkRating(movie.rating)
     }
 
-    private fun checkRating(rating: Int) {
+    private fun checkRating(ratingDouble:Double) {
+        val rating = ratingDouble.toInt()/2
         when (rating) {
             0 -> {
                 star1.setImageResource(R.drawable.star_icon_grey)
