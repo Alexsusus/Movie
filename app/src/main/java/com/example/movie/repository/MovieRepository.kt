@@ -32,7 +32,7 @@ private fun parseMovie(movieObject: JSONObject?): Movie {
             movieObject.getBoolean("adult"),
             parseGenreIds(movieObject.getJSONArray("genre_ids")),
             movieObject.getInt("vote_count"),
-            movieObject.getString("original_title"),
+            movieObject.getString("title"),
             movieObject.getInt("runtime"),
             movieObject.getDouble("vote_average")
         )
