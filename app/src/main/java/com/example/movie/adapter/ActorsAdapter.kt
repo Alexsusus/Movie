@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.movie.R
 import com.example.movie.model.Actor
-import com.example.movie.model.ViewHolderActor
+import com.example.movie.viewHolders.ViewHolderActor
 
 class ActorsAdapter(
     context: Context,
