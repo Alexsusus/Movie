@@ -2,6 +2,7 @@ package com.example.movie
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -10,9 +11,10 @@ import android.widget.ImageButton
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.movie.adapter.ActorsAdapter
-import com.example.movie.model.Actor
+import com.example.movie.repository.ActorRepository
 
-//start
+
+
 class FragmentMoviesDetails : Fragment() {
 
     private var someFragmentClickListener: SomeFragmentClickListener? = null
@@ -22,14 +24,19 @@ class FragmentMoviesDetails : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
         val view = inflater.inflate(R.layout.fragment_movies_details, container, false)
         list = view.findViewById(R.id.recyclerView)
-        val actors = getActors()
+
+        //var arg = arguments?.getInt("id_movie")
+        val actorRepository = ActorRepository()
+
+        val actors = context?.let { actorRepository.getActors(it) }
         val layoutManager = GridLayoutManager(context, 4)
         list.layoutManager = layoutManager
 
-        val adapter = context?.let { ActorsAdapter(it, actors) }
+        val adapter = context?.let {
+            actors?.let { it1 -> ActorsAdapter(it, it1) }
+        }
         list.adapter = adapter
 
         view.findViewById<ImageButton>(R.id.backButton).apply {
@@ -63,24 +70,4 @@ class FragmentMoviesDetails : Fragment() {
         outState.putParcelable("adapter_state", list.layoutManager?.onSaveInstanceState())
     }
 
-    private fun getActors(): List<Actor> {
-        return listOf(
-            Actor(
-                R.drawable.pic_robert,
-                "R.string.nameRobertDJ"
-            ),
-            Actor(
-                R.drawable.pic_chris_evans,
-                "Chris Evans"
-            ),
-            Actor(
-                R.drawable.pic_mark,
-                "Mark Ruffalo"
-            ),
-            Actor(
-                R.drawable.pic_chris_h,
-                "Chris Hemsworth"
-            )
-        )
-    }
 }

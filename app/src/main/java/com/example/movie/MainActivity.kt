@@ -2,6 +2,7 @@ package com.example.movie
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 
 class MainActivity : AppCompatActivity(), SomeFragmentClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -21,11 +22,6 @@ class MainActivity : AppCompatActivity(), SomeFragmentClickListener {
         }
     }
 
-    override fun selectedMovie() {
-        supportFragmentManager.beginTransaction()
-            .replace(R.id.main_container, FragmentMoviesDetails())
-            .commit()
-    }
 
     override fun backToMoviesList() {
         supportFragmentManager.beginTransaction()

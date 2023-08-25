@@ -1,18 +1,21 @@
 package com.example.movie.adapter
 
 import android.content.Context
+import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.RecyclerView
+import com.example.movie.FragmentMoviesDetails
 import com.example.movie.R
-import com.example.movie.model.ViewHolderMovie
+import com.example.movie.viewHolders.ViewHolderMovie
 import com.example.movie.model.Movie
 
 
 class MoviesAdapter(
     context: Context,
     var movies: List<Movie>,
-    private val selectedMovieCallback: () -> Unit
 ) : RecyclerView.Adapter<ViewHolderMovie>() {
 
 
@@ -28,7 +31,19 @@ class MoviesAdapter(
     override fun onBindViewHolder(holder: ViewHolderMovie, position: Int) {
         holder.bind(movies[position])
         holder.itemView.setOnClickListener {
-            selectedMovieCallback.invoke()
+
+            //put extra (id movie)
+            val fragmentMoviesDetails = FragmentMoviesDetails()
+            val args = Bundle()
+            args.putInt("id_movie", movies[position].id)
+            fragmentMoviesDetails.arguments = args
+
+            //to fragment movies details
+            val fragmentManager = (holder.itemView.context as FragmentActivity).supportFragmentManager
+            fragmentManager.beginTransaction()
+                .replace(R.id.main_container, fragmentMoviesDetails)
+                .commit()
+
         }
     }
 }

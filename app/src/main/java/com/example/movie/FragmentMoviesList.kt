@@ -15,7 +15,6 @@ class FragmentMoviesList : Fragment() {
 
     private var someFragmentClickListener: SomeFragmentClickListener? = null
     private lateinit var list: RecyclerView
-    //private lateinit var movieRepository: MovieRepository
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,9 +29,7 @@ class FragmentMoviesList : Fragment() {
         list.layoutManager = layoutManager
 
         val adapter = context?.let {
-            MoviesAdapter(it, movies) {
-                someFragmentClickListener?.selectedMovie()
-            }
+            MoviesAdapter(it, movies)
         }
 
         list.adapter = adapter
