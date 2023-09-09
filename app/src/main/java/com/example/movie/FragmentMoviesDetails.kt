@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.movie.adapter.ActorsAdapter
 import com.example.movie.repository.ActorRepository
-
+import com.example.movie.repository.MovieRepository
 
 
 class FragmentMoviesDetails : Fragment() {
@@ -27,8 +27,9 @@ class FragmentMoviesDetails : Fragment() {
         val view = inflater.inflate(R.layout.fragment_movies_details, container, false)
         list = view.findViewById(R.id.recyclerView)
 
-        //var arg = arguments?.getInt("id_movie")
+        var arg = arguments?.getInt("id_movie")
         val actorRepository = ActorRepository()
+        val movieRepository = MovieRepository()
 
         val actors = context?.let { actorRepository.getActors(it) }
         val layoutManager = GridLayoutManager(context, 4)

@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.movie.R
 import com.example.movie.model.Movie
+import com.example.movie.repository.GenreRepository
 
 class ViewHolderMovie(view: View) : RecyclerView.ViewHolder(view) {
 
@@ -23,13 +24,17 @@ class ViewHolderMovie(view: View) : RecyclerView.ViewHolder(view) {
     private val star5: ImageView = itemView.findViewById(R.id.fifth_star)
 
 
-    fun bind(movie: Movie) {
+    fun bind(movie: Movie, genreRepository: GenreRepository) {
+
+        val genreIds = movie.genreIds ?: emptyList()
+        val genreNames = genreRepository.findGenreNamesByIds(genreIds)
+
         Glide.with(poster.context)
             .load(movie.poster)
             .into(poster)
 
         ageLimit.text = "18+"
-        genre.text = movie.genreIds.toString()
+        genre.text = genreNames.joinToString(", ")
         reviews.text = movie.reviews.toString().plus(" REVIEWS")
         movieTitle.text = movie.title
         duration.text = movie.duration.toString().plus(" MIN")

@@ -11,11 +11,13 @@ import com.example.movie.FragmentMoviesDetails
 import com.example.movie.R
 import com.example.movie.viewHolders.ViewHolderMovie
 import com.example.movie.model.Movie
+import com.example.movie.repository.GenreRepository
 
 
 class MoviesAdapter(
     context: Context,
     var movies: List<Movie>,
+    private val genreRepository: GenreRepository
 ) : RecyclerView.Adapter<ViewHolderMovie>() {
 
 
@@ -29,7 +31,8 @@ class MoviesAdapter(
     override fun getItemCount(): Int = movies.size
 
     override fun onBindViewHolder(holder: ViewHolderMovie, position: Int) {
-        holder.bind(movies[position])
+
+        holder.bind(movies[position], genreRepository)
         holder.itemView.setOnClickListener {
 
             //put extra (id movie)

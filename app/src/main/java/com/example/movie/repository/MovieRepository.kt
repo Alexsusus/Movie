@@ -46,7 +46,7 @@ private fun parseMovie(movieObject: JSONObject?): Movie? {
             actors = movieObject.optJSONArray("actors")?.let { it1 -> parseActorsForMovie(it1) },
             rating = movieObject.optDouble("vote_average") ?: 0.0,
             storyline = movieObject.optString("overview", ""),
-            releaseDate = movieObject.optString("release_date", "")
+            releaseDate = movieObject.optString("release_date", ""),
         )
     }
 }
@@ -57,13 +57,12 @@ private fun parseActorsForMovie(actorsArray: JSONArray?): List<Int>? {
         for (i in 0 until actorsArray.length()) {
             val actorId = actorsArray.optInt(i)
             actors.add(actorId)
-            Log.d("parseActorsForMovie", actors.size.toString())
         }
     }
     return actors.takeIf { it.isNotEmpty() }
 }
 
-private fun parseGenreByIds(genresIdsArray: JSONArray): MutableList<Int>? {
+private fun parseGenreByIds(genresIdsArray: JSONArray): List<Int>? {
     val genreIds = mutableListOf<Int>()
     for (i in 0 until genresIdsArray.length()) {
         genreIds.add(genresIdsArray.getInt(i))

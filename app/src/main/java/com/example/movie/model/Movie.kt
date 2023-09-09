@@ -20,7 +20,7 @@ data class Movie(
     val actors: List<Int>?,
     val rating: Double,
     val storyline: String,
-    val releaseDate: String
+    val releaseDate: String,
 ) : Parcelable {
     constructor(parcel: Parcel) : this(
         parcel.readDouble(),

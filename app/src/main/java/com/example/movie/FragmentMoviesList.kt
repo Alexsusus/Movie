@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.movie.adapter.MoviesAdapter
+import com.example.movie.repository.GenreRepository
 import com.example.movie.repository.MovieRepository
 
 class FragmentMoviesList : Fragment() {
@@ -24,12 +25,15 @@ class FragmentMoviesList : Fragment() {
         val view = inflater.inflate(R.layout.fragment_movies_list, container, false)
         list = view.findViewById(R.id.recyclerView)
         val movieRepository = MovieRepository()
+        val genreRepository = context?.let { GenreRepository(it) }
         val movies = context?.let { movieRepository.getMovies(it) } ?: emptyList()
         val layoutManager = GridLayoutManager(context, 2)
         list.layoutManager = layoutManager
 
         val adapter = context?.let {
-            MoviesAdapter(it, movies)
+            genreRepository?.let { genreRepo ->
+                MoviesAdapter(it, movies, genreRepo)
+            }
         }
 
         list.adapter = adapter
