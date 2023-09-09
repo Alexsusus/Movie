@@ -2,7 +2,7 @@
     <string name="app_name">Movie</string>
     <string name="back">back</string>
     <string name="movie_title_details">Avengers: \nEnd Game</string>
-    <string name="age_limit_13">13+</string>
+    <string name="age_limit_18">18+</string>
     <string name="genre">Action, Adventure, Fantasy</string>
     <string name="reviews">125 REVIEWS</string>
     <string name="storyline">Storyline</string>

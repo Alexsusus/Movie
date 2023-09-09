@@ -33,7 +33,12 @@ class ViewHolderMovie(view: View) : RecyclerView.ViewHolder(view) {
             .load(movie.poster)
             .into(poster)
 
-        ageLimit.text = "18+"
+        if (movie.isAdult) {
+            ageLimit.visibility = View.VISIBLE
+        } else {
+            ageLimit.visibility = View.GONE
+        }
+
         genre.text = genreNames.joinToString(", ")
         reviews.text = movie.reviews.toString().plus(" REVIEWS")
         movieTitle.text = movie.title
