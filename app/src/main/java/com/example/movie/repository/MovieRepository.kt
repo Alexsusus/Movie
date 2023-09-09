@@ -1,7 +1,6 @@
 package com.example.movie.repository
 
 import android.content.Context
-import android.util.Log
 import com.example.movie.model.Movie
 import org.json.JSONArray
 import org.json.JSONObject
@@ -24,6 +23,20 @@ class MovieRepository {
         }
 
         return moviesList
+    }
+
+    fun findMovieById(context: Context, id: Int): Movie? {
+        val json = context.assets.open("data.json").bufferedReader().use { it.readText() }
+        val movieArray = JSONArray(json)
+
+        for (i in 0 until movieArray.length()) {
+            val movieObject = movieArray.getJSONObject(i)
+            val movie = parseMovie(movieObject)
+            if (movie != null && movie.id == id) {
+                return movie
+            }
+        }
+        return null
     }
 }
 
@@ -68,6 +81,6 @@ private fun parseGenreByIds(genresIdsArray: JSONArray): List<Int>? {
         genreIds.add(genresIdsArray.getInt(i))
     }
     return genreIds.takeIf { it.isNotEmpty() }
-
-
 }
+
+

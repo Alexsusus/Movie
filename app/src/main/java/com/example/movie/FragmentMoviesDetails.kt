@@ -2,16 +2,19 @@ package com.example.movie
 
 import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.movie.adapter.ActorsAdapter
 import com.example.movie.repository.ActorRepository
+import com.example.movie.repository.GenreRepository
 import com.example.movie.repository.MovieRepository
 
 
@@ -26,15 +29,47 @@ class FragmentMoviesDetails : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_movies_details, container, false)
         list = view.findViewById(R.id.recyclerView)
+        val imageBackground = view.findViewById<ImageView>(R.id.image_background_poster)
+        val ageLimit = view.findViewById<TextView>(R.id.age_limit)
+        val title = view.findViewById<TextView>(R.id.movie_title_details)
+        val genres = view.findViewById<TextView>(R.id.genres)
+        val reviews = view.findViewById<TextView>(R.id.reviews)
+        val storyLine = view.findViewById<TextView>(R.id.text_storyline)
 
-        var arg = arguments?.getInt("id_movie")
+
+        var movieId = arguments?.getInt("id_movie")
+
         val actorRepository = ActorRepository()
         val movieRepository = MovieRepository()
+        val genreRepository = context?.let { GenreRepository(it) }
+
+        val movie = movieId?.let { context?.let { it1 -> movieRepository.findMovieById(it1, it) } }
+
+        if (movie != null) {
+            Glide.with(imageBackground.context)
+                .load(movie.poster)
+                .into(imageBackground)
+
+            if (movie.isAdult) {
+                ageLimit.visibility = View.VISIBLE
+            } else {
+                ageLimit.visibility = View.GONE
+            }
+
+            title.text = movie.title
+
+            val genreIds = movie.genreIds ?: emptyList()
+            val genreNames = genreRepository?.findGenreNamesByIds(genreIds)
+            if (genreNames != null) {
+                genres.text = genreNames.joinToString { "," }
+            }
+            reviews.text = movie.reviews.toString()
+            storyLine.text = movie.storyline
+        }
 
         val actors = context?.let { actorRepository.getActors(it) }
         val layoutManager = GridLayoutManager(context, 4)
         list.layoutManager = layoutManager
-
         val adapter = context?.let {
             actors?.let { it1 -> ActorsAdapter(it, it1) }
         }
