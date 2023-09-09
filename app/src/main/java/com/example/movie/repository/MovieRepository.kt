@@ -69,4 +69,6 @@ private fun parseGenreByIds(genresIdsArray: JSONArray): MutableList<Int>? {
         genreIds.add(genresIdsArray.getInt(i))
     }
     return genreIds.takeIf { it.isNotEmpty() }
+
+
 }

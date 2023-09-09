@@ -28,7 +28,6 @@ class ActorRepository {
         val name = actorObject.getString("name")
         val originalName = actorObject.getString("original_name")
         val profilePath = actorObject.optString("profile_path")
-        Log.d("ActorParsing", "Gender: $gender, ID: $id, Name: $name, Original Name: $originalName, Profile Path: $profilePath")
         return Actor(gender, id, name, originalName, profilePath)
     }
 }
