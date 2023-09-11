@@ -10,7 +10,7 @@ import com.example.movie.viewHolders.ViewHolderActor
 
 class ActorsAdapter(
     context: Context,
-    var actors: List<Actor>
+    private var actors: List<Actor>
 ) : RecyclerView.Adapter<ViewHolderActor>() {
 
     private val inflater: LayoutInflater = LayoutInflater.from(context)

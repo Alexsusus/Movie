@@ -2,6 +2,7 @@ package com.example.movie
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -61,7 +62,7 @@ class FragmentMoviesDetails : Fragment() {
             val genreIds = movie.genreIds ?: emptyList()
             val genreNames = genreRepository?.findGenreNamesByIds(genreIds)
             if (genreNames != null) {
-                genres.text = genreNames.joinToString { "," }
+                genres.text = genreNames.joinToString(", ")
             }
             reviews.text = movie.reviews.toString()
             storyLine.text = movie.storyline
