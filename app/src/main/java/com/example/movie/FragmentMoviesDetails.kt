@@ -47,7 +47,7 @@ class FragmentMoviesDetails : Fragment() {
 
         if (movie != null) {
             Glide.with(imageBackground.context)
-                .load(movie.poster)
+                .load(movie.background)
                 .into(imageBackground)
 
             if (movie.isAdult) {
