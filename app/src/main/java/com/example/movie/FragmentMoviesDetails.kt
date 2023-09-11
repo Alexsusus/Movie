@@ -2,7 +2,6 @@ package com.example.movie
 
 import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -39,13 +38,8 @@ class FragmentMoviesDetails : Fragment() {
 
 
         var movieId = arguments?.getInt("id_movie")
-
-        val actorRepository = ActorRepository()
         val movieRepository = MovieRepository()
-        val genreRepository = context?.let { GenreRepository(it) }
-
         val movie = movieId?.let { context?.let { it1 -> movieRepository.findMovieById(it1, it) } }
-
         if (movie != null) {
             Glide.with(imageBackground.context)
                 .load(movie.background)
@@ -59,6 +53,7 @@ class FragmentMoviesDetails : Fragment() {
 
             title.text = movie.title
 
+            val genreRepository = context?.let { GenreRepository(it) }
             val genreIds = movie.genreIds ?: emptyList()
             val genreNames = genreRepository?.findGenreNamesByIds(genreIds)
             if (genreNames != null) {
@@ -67,8 +62,9 @@ class FragmentMoviesDetails : Fragment() {
             reviews.text = movie.reviews.toString()
             storyLine.text = movie.storyline
         }
+        val actorRepository = context?.let { ActorRepository(it) }
+        val actors = movie?.actors?.let { actorRepository?.findActorsByMovieId(it) }
 
-        val actors = context?.let { actorRepository.getActors(it) }
         val layoutManager = GridLayoutManager(context, 4)
         list.layoutManager = layoutManager
         val adapter = context?.let {
