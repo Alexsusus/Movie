@@ -1,9 +1,11 @@
 package com.example.movie.repository
 
 import android.content.Context
+import android.util.Log
 import com.example.movie.model.Actor
 import org.json.JSONArray
 import org.json.JSONObject
+import kotlin.math.log
 
 class ActorRepository(private val context: Context) {
 
@@ -40,6 +42,6 @@ class ActorRepository(private val context: Context) {
                 actorsFound.add(matchingActor)
             }
         }
-        return actors
+        return actorsFound
     }
 }

@@ -11,6 +11,7 @@ import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.movie.adapter.ActorsAdapter
@@ -23,6 +24,7 @@ class FragmentMoviesDetails : Fragment() {
 
     private var someFragmentClickListener: SomeFragmentClickListener? = null
     private lateinit var list: RecyclerView
+    private val TAG = "TAG"
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -64,9 +66,16 @@ class FragmentMoviesDetails : Fragment() {
             storyLine.text = movie.storyline
         }
         val actorRepository = context?.let { ActorRepository(it) }
-        val actors = movie?.actors?.let { actorRepository?.findActorsByMovieId(it) }
 
-        val layoutManager = GridLayoutManager(context, 4)
+        if (movie != null) {
+            Log.d(TAG, "onCreateView: ${movie.actors}")
+        }
+
+        val actors = movie?.actors?.let { actorRepository?.findActorsByMovieId(it) }
+        val layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+        if (actors != null) {
+            layoutManager.initialPrefetchItemCount = actors.size
+        }
         list.layoutManager = layoutManager
         val adapter = context?.let {
             actors?.let { it1 -> ActorsAdapter(it, it1) }
