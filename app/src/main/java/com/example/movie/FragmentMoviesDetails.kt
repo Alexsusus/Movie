@@ -80,6 +80,7 @@ class FragmentMoviesDetails : Fragment() {
         val adapter = context?.let {
             actors?.let { it1 -> ActorsAdapter(it, it1) }
         }
+
         list.adapter = adapter
 
         view.findViewById<ImageButton>(R.id.backButton).apply {

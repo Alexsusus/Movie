@@ -16,7 +16,7 @@ class ActorsAdapter(
     private val inflater: LayoutInflater = LayoutInflater.from(context)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolderActor {
-        return ViewHolderActor(inflater.inflate(R.layout.view_holder_actor,parent,false))
+        return ViewHolderActor(inflater.inflate(R.layout.view_holder_actor, parent, false))
     }
 
     override fun getItemCount(): Int = actors.size
