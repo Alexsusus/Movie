@@ -16,7 +16,7 @@ class FragmentMoviesList : Fragment() {
 
     private var someFragmentClickListener: SomeFragmentClickListener? = null
     private lateinit var list: RecyclerView
-
+//
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
