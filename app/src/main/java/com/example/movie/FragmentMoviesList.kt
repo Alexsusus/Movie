@@ -11,12 +11,17 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.movie.adapter.MoviesAdapter
 import com.example.movie.repository.GenreRepository
 import com.example.movie.repository.MovieRepository
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class FragmentMoviesList : Fragment() {
 
     private var someFragmentClickListener: SomeFragmentClickListener? = null
     private lateinit var list: RecyclerView
-//
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -24,23 +29,38 @@ class FragmentMoviesList : Fragment() {
 
         val view = inflater.inflate(R.layout.fragment_movies_list, container, false)
         list = view.findViewById(R.id.recyclerView)
+
         val movieRepository = MovieRepository()
         val genreRepository = context?.let { GenreRepository(it) }
-        val movies = context?.let { movieRepository.getMovies(it) } ?: emptyList()
-        val layoutManager = GridLayoutManager(context, 2)
-        list.layoutManager = layoutManager
 
-        val adapter = context?.let {
-            genreRepository?.let { genreRepo ->
-                MoviesAdapter(it, movies, genreRepo)
+        val uiScope = CoroutineScope(Dispatchers.IO + Job())
+        uiScope.launch {
+
+            try {
+                val movies =
+                    movieRepository.getMovies(context ?: throw Exception("Context is null"))
+
+                withContext(Dispatchers.Main) {
+                    val layoutManager = GridLayoutManager(context, 2)
+                    list.layoutManager = layoutManager
+
+                    val adapter = genreRepository?.let {
+                        MoviesAdapter(
+                            requireContext(), movies,
+                            it
+                        )
+                    }
+                    list.adapter = adapter
+
+
+                    savedInstanceState?.let {
+                        val adapterState = it.getBundle("adapter_state")
+                        layoutManager.onRestoreInstanceState(adapterState)
+                    }
+                }
+            } catch (e: Exception) {
+                e.printStackTrace()
             }
-        }
-
-        list.adapter = adapter
-
-        savedInstanceState?.let {
-            val adapterState = it.getBundle("adapter_state")
-            layoutManager.onRestoreInstanceState(adapterState)
         }
 
         return view
